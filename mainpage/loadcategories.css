@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;400&display=swap');
+
+body{
+    font-family: 'Dosis', sans-serif;
+}
+
+#tab{
+    width: 50%;
+    height: 300px;
+    border: solid 2px transparent;
+    padding: 0;
+    text-align: center;
+}
+
+#image{
+    width: 100%;
+    height: 250px;
+}
+
+.empty span{
+    position: relative;
+    bottom: 5px;
+    margin-right: 20px;
+}
+
+#tab:hover{
+    border-top: solid 2px  #068da5;
+    border-bottom: solid 2px  #068da5;
+}
+
+#divline{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+   
+}
+
+
+#image:hover{
+    opacity:0.2;
+    cursor: pointer;
+}
+
+.empty{
+    background-color: rgb(252, 67, 67);
+    height: 45px;
+    color: white;
+    font-size: larger;
+    border-radius: 20px;
+}
+
+.exist{
+    height: 45px;
+    visibility: hidden;
+}
+
+.none {
+    visibility: hidden;
+}
+
+.maincontainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagination_link{
+    border: solid 1px #068da5;
+    padding: 10px;
+    font-size: large;
+    color: #068da5;
+}
+
+.pagination_link:hover{
+    cursor: pointer;
+}
+
+.page{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.last{
+    border-right: none;
+}
+
+.selected{
+    background-color: #068da5;
+    color: white;
+}
+
+
+label{
+    font-size: larger;
+}
+
+
+
+#mini{
+    width: 50%;
+    flex-direction: row;
+    display: flex;
+}
+
+@media screen and (min-width:1300px) and (max-width: 1500px) {
+    #mini{
+         width: 50%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    
+    #divline{
+        width: 85%;
+        display: flex;
+        flex-direction: row;
+       
+    }
+}
+
+@media screen and (min-width:1200px) and (max-width: 1300px) {
+    #mini{
+        width: 50%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    #divline{
+        width: 90%;
+        display: flex;
+        flex-direction: row;
+       
+    }
+}
+
+@media screen and (min-width:1100px) and (max-width: 1200px) {
+    #mini{
+        width: 50%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    #divline{
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+       
+    }
+}
+
+@media screen and (min-width:1000px) and (max-width: 1100px) {
+    #mini{
+        width: 50%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    #divline{
+         width: 98%;
+        display: flex;
+        flex-direction: row;
+       
+    }
+}
+
+@media screen and (min-width:800px) and (max-width: 1000px) {
+    #mini{
+        width: 80%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    #divline{
+         width: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+    }
+}
+
+.sort{
+    display: flex;
+    justify-content: right;
+    margin-right: 20%;
+}
+
+.sort select{
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    background-color: white;
+    color:#068da5;
+    border: solid 3px #068da5;
+    font-size: 16px;
+}
+
+.sort select:hover{
+    cursor: pointer;
+}
+
+
+@media screen and (min-width:700px) and (max-width: 800px) {
+    #mini{
+        width: 90%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    #divline{
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+    }
+}
+
+@media screen and (min-width:600px) and (max-width: 700px) {
+    #mini{
+        width: 95%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    #divline{
+         width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    #mini{
+        width: 75%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+
+    #divline{
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+    }
+
+    #tab{
+        width: 80%;
+        height: 300px;
+        padding: 0;
+        text-align: center;
+    }
+
+   
+    .pagination_link{
+       padding: 5px;
+      }
+}
