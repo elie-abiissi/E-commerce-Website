@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;400&display=swap');
+
+body{
+    font-family: 'Dosis', sans-serif;
+}
+
+fieldset{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    border: solid 2px #068da5;
+    border-radius: 15px;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+}
+
+legend img{
+    width: 100px;
+}
+
+#tab td{
+    padding: 5px;
+}
+
+.icon{
+    text-align: center;
+}
+
+#tab{
+    padding: 5px;
+    width: 75%;
+    border-collapse: collapse;
+}
+
+
+input[type="text"], input[type="password"], input[type="email"], input[type="date"],select{
+    border: none;
+    border-bottom: solid 1px #068da5;
+    outline: none;
+    width: 80%;  
+    padding: 2px 10px 2px 10px; 
+    font-size: 14px;
+}
+
+
+input[type="reset"], input[type="submit"]{
+    width: 30%;
+    background-color: white;
+    border: solid 1px #068da5;
+    padding: 5px;
+    font-size: 16px;
+} 
+
+input[type="reset"]:hover, input[type="submit"]:hover{
+    cursor: pointer;
+    border-width: 2px;
+    padding: 3px;
+}
+
+.button{
+    text-align: center;
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1300px) { 
+    #tab{
+        width: 85%;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], input[type="date"],select{
+        width: 85%;  
+        padding: 2px 8px 2px 8px; 
+     }
+
+    
+
+    fieldset{
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) { 
+    #tab{
+        width: 95%;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], input[type="date"],select{
+        width: 90%;  
+        padding: 2px 6px 2px 6px; 
+    }
+
+    
+
+    fieldset{
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 800px)  { 
+    #tab{
+        width: 95%;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], input[type="date"],select{
+        width: 90%;  
+        padding: 2px 6px 2px 6px; 
+    }
+
+    
+
+    fieldset{
+        width: 80%;
+    }
+}
+
+
+@media screen  and (max-width: 500px) { 
+    #tab{
+        width: 100%;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"], input[type="date"],select{
+        width: 95%;  
+        padding: 3px; 
+        font-size: 14px;
+    }
+
+    
+
+    fieldset{
+        width: 90%;
+    }
+}
+
+
+.recaptcha{
+    height: 60px;
+    text-align: center;
+    padding: 0px;
+    background-color: rgb(243, 243, 243);
+    width: 100%;
+}
+
+.recaptcha label{
+    position: relative;
+    top: 20px;
+    font-size: 18px;
+}
+
+.recaptcha img{
+    width: 60px;
+    height: 60px;
+    float: right;
+}
+
+.recap{
+    text-align: center;
+}
+
+#errors{
+    color: red;
+}
