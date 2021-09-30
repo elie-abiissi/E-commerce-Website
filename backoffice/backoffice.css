@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;400&display=swap');
+
+body{
+    display: flex;
+    font-family: 'Dosis', sans-serif;
+}
+
+#main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+button{
+    background-color: #068da5;
+    height: 40px;
+    border: none;
+    width: 100%;
+    color: white;
+    font-weight: 300;
+    font-size:medium;
+}
+
+
+
+button:hover{
+    background-color: white;
+    color: #068da5;
+    cursor: pointer;
+}
+
+#date, #time, #day{
+    background-color: #068da5;
+    color: white;
+    padding: 5px;
+    font-weight: 900;
+    font-size: larger ;
+    text-indent: 40px;
+}
+
+
+
+#mytable{
+    width: 40%;
+    background-color: #068da5;
+    border-radius: 30px;
+    max-height: 500px;
+}
+
+#separator1{
+    height: 40px;
+}
+
+#separator2{
+    height: 100px;
+}
+
+#separator3{
+    height: 20px;
+}
+
+#am_pm{
+    margin-left: 10px;
+}
+
+#time_container{
+    font-size: xx-large;
+}
+
+
+@media screen and (max-width:1400px) and (min-width:1200px) {
+    #mytable{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:1200px) and (min-width:1000px) {
+    #mytable{
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-width:1000px) and (min-width:800px) {
+    #mytable{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:800px) and (min-width:600px) {
+    #mytable{
+        width: 80%;
+    }
+    
+}
+
+@media screen and (max-width:600px){
+    #mytable{
+        width: 90%;
+    }
+}
