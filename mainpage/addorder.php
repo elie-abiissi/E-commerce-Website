@@ -15,6 +15,9 @@ session_start();
 $query = "INSERT INTO orders (idproduct, quantity, idcart) VALUES ($product, $quantity, $cart)";
 
 $result = mysqli_query($link,$query);
+            
+            $query = "UPDATE products SET stock = stock - $quantity WHERE idproduct = $product";
+$result = mysqli_query($link,$query);
         }
     }
 ?>
