@@ -1,0 +1,445 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 30, 2021 at 12:37 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `web3_project`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carts`
+--
+
+CREATE TABLE `carts` (
+  `idcart` int(3) NOT NULL,
+  `date` date NOT NULL,
+  `idclient` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`idcart`, `date`, `idclient`) VALUES
+(3, '2021-09-30', 8),
+(4, '2021-09-30', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `idcategorie` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `image` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`idcategorie`, `name`, `image`) VALUES
+(1, 'boards', '../images/boards/'),
+(2, 'kits', '../images/kits/'),
+(3, 'shields', '../images/shields/'),
+(4, 'components', '../images/components/'),
+(5, 'screens', '../images/screens/'),
+(6, 'modules', '../images/modules/');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clients`
+--
+
+CREATE TABLE `clients` (
+  `idclient` int(11) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
+  `date` date NOT NULL,
+  `password` text NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` int(8) NOT NULL,
+  `governorate` varchar(30) NOT NULL,
+  `district` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`idclient`, `firstname`, `lastname`, `date`, `password`, `email`, `phone`, `governorate`, `district`) VALUES
+(1, 'Elie', 'Abi Issa', '2001-01-23', '3adddcd130f7b757857a92691ee09c3a', 'elieabissi@hotmail.com', 70562333, 'Keserwan-Jbeil', 'Byblos'),
+(2, 'Salim', 'Ayoub', '2004-08-12', '5c792ab5a27f615dc22f6732e29b1ee6', 'salim123@gmail.com', 3216578, 'North', 'Zgharta'),
+(3, 'Ralph', 'Kosseify', '1990-11-23', 'e2282829f546bbcb216693e2a5659a79', 'ralph123@work.com', 71245622, 'Nabatieh', 'Hasbaya'),
+(4, 'Karim', 'Khoury', '1999-09-06', '86daa7cd600c9817465d4fde34446278', 'karim123@cnam.lb', 81774779, 'Baalbek-Hermel', 'Hermel'),
+(5, 'Rodrigue', 'Azzi', '1998-04-12', 'bf6f09c9f8259ff608ea79efbcac35fe', 'rodrigue123@lu.lb', 76124622, 'Beirut', ''),
+(6, 'Nicole', 'Abboud', '2005-12-26', '96cee49cfcb7ce7242660592c21e42f4', 'nicole123@gmail.com', 78146112, 'Nabatieh', 'Bint Jbeil'),
+(7, 'Jeff', 'Ahmad', '1999-09-07', 'dc2af307c55523ce42701dbe43880d35', 'jeff123@gmail.com', 71229899, 'Baalbek-Hermel', 'Baalbek'),
+(8, 'Fawzi', 'Azzi', '1970-06-07', '87ec69cd408e833ab965de8dbc568a97', 'fawzi123@hotmail.com', 3467586, 'Nabatieh', 'Hasbaya');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `governorate` varchar(30) NOT NULL,
+  `district` varchar(30) NOT NULL,
+  `fees` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`governorate`, `district`, `fees`) VALUES
+('Baalbek-Hermel', 'Baalbek', 22),
+('Baalbek-Hermel', 'Hermel', 21),
+('Beirut', '', 5),
+('Beqaa', 'Rashaya', 17),
+('Beqaa', 'Western Beqaa', 18),
+('Beqaa', 'Zahle', 15),
+('Baalbek-Hermel', 'Baalbek', 22),
+('Baalbek-Hermel', 'Hermel', 21),
+('Keserwan-Jbeil', 'Byblos', 13),
+('Keserwan-Jbeil', 'Jounieh', 11),
+('Mount Lebanon', 'Aley', 16),
+('Mount Lebanon', 'Baabda', 9),
+('Mount Lebanon', 'Chouf', 11),
+('Mount Lebanon', 'Matn', 7),
+('Nabatieh', 'Bint Jbeil', 23),
+('Nabatieh', 'Hasbaya', 24),
+('Nabatieh', 'Marjeyoun', 27),
+('Nabatieh', 'Nabatieh', 21),
+('North', 'Batroun', 18),
+('North', 'Bsharri', 22),
+('North', 'Koura', 21),
+('North', 'Miniyeh-Danniyeh', 24),
+('North', 'Tripoli', 26),
+('North', 'Zgharta', 29),
+('South', 'Sidon', 24),
+('South', 'Jezzine', 26),
+('South', 'Tyre', 29),
+('Akkar', 'Halba', 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `username` varchar(30) NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`username`, `password`) VALUES
+('admin', '21232f297a57a5a743894a0e4a801fc3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `idmessage` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `messages`
+--
+
+INSERT INTO `messages` (`idmessage`, `email`, `message`) VALUES
+(1, 'elieabissi@hotmail.com', 'Hello,\r\nDo you have a delivery?'),
+(2, 'tony_khoury@gmail.com', 'Do you sell raspberry pi?'),
+(3, 'odette_abb123@yahoo.com', 'Do you repair electronics?'),
+(4, 'marc_ayoub1287@hotmail.com', 'I want to buy an arduino uno.'),
+(5, 'nicole_zgheib@work.com', 'Hello, where is your shop located?'),
+(6, 'samer_ab679@hotmail.com', 'Do you sell items outside Lebanon?'),
+(7, 'fawzi123@hotmail.com', 'Hello, Help me please.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `idorder` int(3) NOT NULL,
+  `idproduct` int(3) NOT NULL,
+  `quantity` int(3) NOT NULL,
+  `idcart` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`idorder`, `idproduct`, `quantity`, `idcart`) VALUES
+(11, 10, 1, 3),
+(12, 124, 1, 3),
+(13, 25, 1, 3),
+(14, 56, 1, 3),
+(15, 53, 1, 3),
+(16, 117, 1, 3),
+(19, 2, 3, 4),
+(20, 3, 1, 4),
+(21, 3, 1, 4),
+(22, 3, 3, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `idproduct` int(5) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `price` decimal(4,2) NOT NULL,
+  `stock` int(3) NOT NULL,
+  `idcategorie` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`idproduct`, `name`, `description`, `price`, `stock`, `idcategorie`) VALUES
+(1, 'bluetooth', 'This Bluetooth mainly depends on the microcontroller like ATmega168 and this board is also called Arduino BT. This kind of board includes different components like digital pins-16, analog pins-6, crystal oscillator-16MHz, reset button, screw terminals, ICSP header. In this board, the screw terminals are mainly used for power. The programming of this Bluetooth microcontroller can be done with Bluetooth like a wireless connection.', '8.50', 0, 1),
+(2, 'due', 'This Arduino board depends on the ARM Cortex-M3 and it is the first Arduino microcontroller board. This board includes digital I/O pins-54 where 12-pins are PWM o/p pins, analog pins -12, UARTs-4, a CLK with 84 MHz, an USB OTG, DAC-2, a power jack, TWI-2, a JTAG header, an SPI header, two buttons for reset & erase.', '7.89', 12, 1),
+(3, 'duemilanove', 'The Arduino Duemilanove is a microcontroller board based on the ATmega168 (datasheet) or ATmega328. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz crystal oscillator, a USB connection, a power jack, an ICSP header, and a reset button.', '9.78', 9, 1),
+(4, 'esplora', 'The Arduino Esplora includes a small computer known as a microcontroller including a number of inputs & outputs. The inputs of this board are a light sensor, four buttons, a microphone, an accelerometer, joystick, a slider, a temperature sensor, etc whereas the outputs are a 3 color LED, a buzzer. This kind of Arduino board looks like a videogame controller.', '5.23', 11, 1),
+(5, 'ethernet', 'The Arduino Ethernet board depends on the microcontroller like ATmega328. This kind of microcontroller board includes analog pins-5, digital I/O pins-14, RST button, an RJ45 connection, crystal oscillator, a power jack, ICSP header, etc. The connection of the Arduino board can be done through the Ethernet shield to the internet.', '11.40', 14, 1),
+(6, 'fio', 'The Arduino Fio is a microcontroller board based on the ATmega328P runs at 3.3V and 8 MHz. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 8 analog inputs, an on-board resonator, a reset button, and holes for mounting pin headers. It has connections for a Lithium Polymer battery and includes a charge circuit over USB. An XBee socket is available on the bottom of the board.', '7.23', 17, 1),
+(7, 'gemma', 'Arduino Gemma is a miniature wearable microcontroller board based on the ATtiny85. It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a battery to get started on your wearable projects.', '6.20', 9, 1),
+(8, 'industrial', ' Arduino Industrial 101 is an Evaluation board for Arduino 101 LGA module. The ATmega32u4 microcontroller is integrated in the baseboard. The module supports a Linux distribution based on OpenWRT named LininoOS.', '17.90', 6, 1),
+(9, 'mega', 'The Arduino Mega is similar to the UNO’s big brother. It includes lots of digital I/O pins (from that, 14-pins can be used as PWM o/ps), 6-analog inputs, a reset button, a power jack, a USB connection, and a reset button. It includes everything required to hold up the microcontroller; simply attach it to a PC with the help of a USB cable and give the supply to get started with an AC-to-DC adapter or battery. The huge number of pins make this Arduino board very helpful for designing projects that need a bunch of digital i/ps or o/ps like lots of buttons. ', '23.56', 14, 1),
+(10, 'linino', 'The Linino ONE  is a MIPS board based on the Atheros AR9331 and the ATmega32u4. The Atheros processor supports Linino, a Linux distribution based on OpenWRT. The board has built-in WiFi support,  20 digital input/output pins (of which 7 can be used as PWM outputs and 12 as analog inputs), a 16 MHz crystal oscillator, a micro USB connection, an ICSP header, 2 reset buttons and 1 user button.', '8.90', 17, 1),
+(11, 'lillypad', 'The LilyPad Arduino board is a wearable e-textile technology expanded by Leah “ Buechley” and considerately designed by “Leah and SparkFun”. Each board was imaginatively designed with huge connecting pads & a smooth back to let them to be sewn into clothing using conductive thread. This Arduino also comprises of I/O, power, and also sensor boards which are built especially for e-textiles. These are even washable.', '16.12', 19, 1),
+(12, 'leonardo', 'The first development board of an Arduino is the Leonardo board. This board uses one microcontroller along with the USB. That means, it can be very simple and cheap also. Because this board handles USB directly, program libraries are obtainable which let the Arduino board to follow a keyboard of the computer, mouse, etc.', '13.67', 9, 1),
+(13, 'micro', 'The Arduino Micro board mainly depends on the ATmega32U4 based Microcontroller that includes 20-sets of pins where the 7-pins are PWM pins, 12-analog input pins. This board includes different components like an ICSP header, RST button, small USB connection, crystal oscillator-16MHz. The USB connection is inbuilt and this board is the shrunk version of the Leonardo board.', '7.27', 8, 1),
+(14, 'nano', 'This is a small board based on the microcontrollers like ATmega328P otherwise ATmega628 but the connection of this board is the same as to the Arduino UNO board. This kind of microcontroller board is very small in size, sustainable, flexible, and reliable.As compared with the Arduino Uno board, it is small in size. The devices like mini USB and Arduino IDE are necessary to build the projects. This board mainly includes analog pins-8, digital pins-14 with the set of an I/O pin, power pins-6 & RST (reset) pins-2.', '14.90', 12, 1),
+(15, 'osoyoo', 'The Osoyoo UNO Board is fully compatible with Arduino UNO rev.3, it is a microcontroller board based on the ATmega328P. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, a 16 MHz quartz crystal, a USB connection, a power jack, an ICSP header and a reset button. It contains everything needed to support the microcontroller; simply connect it to a computer with a USB cable or power it with a AC-to-DC adapter or battery to get started.', '16.20', 18, 1),
+(16, 'promini', 'The Arduino Pro Mini is a microcontroller board based on the ATmega328. It has 14 digital input/output pins (of which 6 can be used as PWM outputs), 6 analog inputs, an on-board resonator, a reset button, and holes for mounting pin headers. ... The Arduino Pro Mini was designed and is manufactured by SparkFun Electronics.', '21.45', 12, 1),
+(17, 'redboard', 'The RedBoard Arduino board can be programmed using a Mini-B USB cable using the Arduino IDE. It will work on Windows 8 without having to modify your security settings. It is more constant due to the USB or FTDI chip we used and also it is entirely flat on the back. Creating it is very simple to utilize in the project design. Just plug the board, select the menu option to choose an Arduino UNO and you are ready to upload the program. You can control the RedBoard over a USB cable using the barrel jack.', '15.74', 20, 1),
+(18, 'robot', 'This kind of board is the first Arduino over wheels. This Arduino robot includes two processors on each of its boards. The two boards are the motor board and control board where the motor board controls the motors & the control board is used to read the sensors for operating. Every board is a complete Arduino board and its programming can be done through the Arduino IDE. These are microcontroller boards that depend on the ATmega32u4.The pins of this Robot are mapped to actuators and sensors onboard.  The process of programming the robot is the same as the Arduino Leonardo board. It is also named a small computer and it is extensively used in robotics. This board includes the speaker, color screen, buttons-5, motors-2, a digital compass, an SD card reader, potentiometers-2 & floor sensors-5. The library of this robot can be used for controlling the sensors as well as the actuators.', '28.56', 4, 1),
+(19, 'wifi', 'The Arduino Uno WiFi is an Arduino Uno with an integrated WiFi module. The board is based on the ATmega328P with an ESP8266WiFi Module integrated. The ESP8266WiFi Module is a self contained SoC with integrated TCP/IP protocol stack that can give access to your WiFi network (or the device can act as an access point).', '6.23', 16, 1),
+(20, 'uno', 'The Uno is a huge option for your initial Arduino. This Arduino board depends on an ATmega328P based microcontroller. As compared with other types of arduino boards, it is very simple to use like the Arduino Mega type board. .It consists of 14-digital I/O pins, where 6-pins can be used as PWM(pulse width modulation outputs), 6-analog inputs, a reset button, a power jack, a USB connection, an In-Circuit Serial Programming header (ICSP), etc. It includes everything required to hold up the microcontroller; simply attach it to a PC with the help of a USB cable and give the supply to get started with an AC-to-DC adapter or battery.Arduino Uno is the most frequently used board and it is the standard form apart from all the existing Arduino Boards. This board is very useful for beginners.', '15.34', 24, 1),
+(21, 'yun', 'Arduino YÚN is the perfect board to use when designing connected devices and, more in general, Internet of Things projects. It combines the power of Linux with the ease of use of Arduino. Itis a microcontroller board based on the ATmega32u4 and the Atheros AR9331. The Atheros processor supports a Linux distribution based on OpenWrt named Linino OS. The board has built-in Ethernet and WiFi support, a USB-A port, micro-SD card slot, 20 digital input/output pins (7 of them can be used as PWM outputs and 12 as analog inputs), a 16 MHz crystal oscillator, a micro USB connection, an ICSP header, and 3 reset buttons.', '23.19', 14, 1),
+(22, 'zero', 'This is a powerful as well as simple 32-bit board and it provides the best platform for innovative projects like wearable technology, smart IoT devices, crazy robotics, high-tech automation, etc. This board expands by providing improved performance, permitting a range of project opportunities & performs like a great educational tool. This board includes analog input pins-6, digital I/O pins-14, a power jack, AREF button, UART port pins, a USB connector & an In-Circuit Serial Programming (ICSP) header, a power header, etc.This board is power-driven through the SAMD21 microcontroller based on Atmel. The main feature of this is EDBG (Embedded Debugger) based on Atmel and it provides a complete debug interface without using extra hardware.', '27.89', 23, 1),
+(23, '64-button', 'With this Shield you can connect up to 64 buttons to your Arduino. Some cool projects with this shield include musical intruments, cool computer interfaces, etc.', '3.45', 19, 3),
+(24, 'wirelesssd', 'The Wireless SD Shield allows the Arduino to communicate wirelessly using a wireless module. The shield includes a SD car slot.', '2.39', 13, 3),
+(25, 'camera-shield', 'With this Shield it is possible to reduce the complexity of the camera control interface.  It uses I2C interface for the sensor configuration and SPI interface for camera commands and data stream.', '4.71', 11, 3),
+(26, 'can-bus', 'The CAN–BUS Shield adopts MCP2515 CAN buscontroller with SPI interface and MCP2551CAN transceiver to give CAN–BUS capibility to the Arduino.', '1.98', 23, 3),
+(27, 'capacitive-touchpad', 'The Touchpad Shield allows you to build simple capacitive touch interfaces.', '2.60', 22, 3),
+(28, 'cc300-wifi', 'This Shield is a well-equipped network processing unit that can simplify the network connecting process.  It can lower the MCU’s demand on software, which makes it a perfect solution for embeded applications of low-cost, low-power consumption MCU.', '3.94', 15, 3),
+(29, 'ciseco-protox', 'The CISECO ProtoX Shield is a Prototyping board with SMT pads and serial breakout.', '3.17', 16, 3),
+(30, 'esp82-66', 'ESP8266 Wi-Fi Shield is an Arduino compatible shield for the ESP8266 WiFi SoC – a leading platform for Internet of Things (IoT) or Wi-Fi related projects.', '3.98', 25, 3),
+(31, 'ethernet-shield', 'The Ethernet Shield allows you to connect your Arduino to the internet . You just have to plug the shield onto the Arduino board and then, connect it to your network.', '4.23', 12, 3),
+(32, 'gameduino-shield', 'This Shield is a game adapter for Arduino or anything with an SPI interface. It has plugs for a VGA monitor and stereo speakers.', '6.73', 9, 3),
+(33, 'gps-logger-shield', 'The GPS Logger Shield comes with a GPS module and is designed to log data to an SD card.', '2.73', 23, 3),
+(34, 'gsm_gprs-shield', 'The GSM/GPRS Shield allows you to connect your Arduino to GSM/GPRS cell phone network. It allows you to dial a phone number or send a text message to  a friend via easy to use AT commands.', '7.12', 6, 3),
+(35, 'joystick-shield', 'The joystick Shield provides simple analog inputs and four separate buttons and one button under the joystick itself.', '3.12', 17, 3),
+(36, 'lcd-shield', 'This Shield makes it easy to use a 16×2 Character LCD. With this, it is  possible to control a 16×2 Character LCD, up to 3 backlight pins and 5 keypad pins using only the two I2C pins on the Arduino.', '5.19', 13, 3),
+(37, 'microsd-shield', 'The microSD Shield equips your Arduino with mass-storage capability, so you can use it for data-logging or other related projects.', '1.89', 25, 3),
+(38, 'motor-shield', 'This Shield allows an easy control of motor direction and speed. It makes it easy to incorporate a motor into any of your projects.', '2.59', 18, 3),
+(39, 'negative-voltage-generation', 'This shield generates negative voltage for Arduino. It is useful if you need negative voltage.', '5.45', 12, 3),
+(40, 'neopixel-shield', 'With this shield from Adafruit, you can control a 5×8 matrix of RGB LEDs using only one pin.', '7.45', 8, 3),
+(41, 'nfc_rfid', 'This Shield is perfect for any 13.56MHz RFID or NFC application. It can read and write tags so, it is perfect to use for RFID-tag projects.', '4.25', 18, 3),
+(42, 'protoshield', 'The ProtoShield is a prototyping Shield that makes it easy to prototype. It allows for easy connections between the breadboard and the Arduino.', '5.33', 16, 3),
+(43, 'relay-shield', 'The Relay Shield is a module with 4 mechanical relays that provides you an easy way to control high voltage.', '5.77', 19, 3),
+(44, 'smoke-detector', 'This Shield can detect concentrations of combustible gas in the air and read it as an analogue value. Useful to make a smoke detector system.', '2.44', 16, 3),
+(45, 'sparkfun-mp3-player', 'The SparkFun MP3 Player Shield is an awesome MP3 decoder with the capabilities of storing music files onto a run-of-the-mill microSD card, thus giving you the ability toadd music or sound effects to any project. The MP3 Shield utilizes the VS1053B MP3 audio decoder IC to decode audio files.', '8.77', 5, 3),
+(46, 'wave-shield', 'This Shield solves many problems related to audio low quality with electronic projects with audio. It can play up to 22KHZ, 12 bit uncompressed audio files of any length. Audio files are read off of an SD/MMC card. With this shield, it is possible to add high quality audio to your projects.', '7.78', 19, 3),
+(47, '4 bits tube', 'The TM1637 4 Bits Digital Tube LED Display Module is an affordable solution for displaying the output data of your Arduino project.', '9.45', 14, 5),
+(48, '1602-lcd-display', 'It can display 16 characters in each line, that is a total of 32 characters. LCD modules are coming in different colors and sizes with a different number of displayable characters.', '11.56', 9, 5),
+(49, '5110-lcd-display', 'It is capable of displaying alphanumeric characters, draw lines and other shapes and even displays a bitmap image.', '7.51', 19, 5),
+(50, 'dot-matrix', 'It is a two-dimensional patterned LED array that is used to represent characters, symbols, and images.', '4.16', 21, 5),
+(51, 'oled', 'The OLED display is an alternative for LCD display. The OLED is super-light, almost paper-thin, flexible, and produce a brighter and crisper picture.', '11.51', 7, 5),
+(52, 'tft lcd display', 'The Arduino TFT screen is a backlit TFT LCD screen with a micro SD card slot in the back. You can draw text, images and shapes to the screen.', '14.96', 4, 5),
+(53, 'tft-touchscreen', 'This TFT display is big ,bright , and colorful  240x320 pixels with individual pixel control. It has way more resolution than a black and white 128x64 display and a resistive touchscreen attached to it already, so you can detect finger presses anywhere on the screen.', '9.51', 11, 5),
+(54, '1n4001 diode', 'Diodes are two-terminal passive devices that allow current to flow in only one direction. They are frequently used to protect from voltage spikes, to protect I/O pins, to form rectifiers, and more.', '1.83', 22, 4),
+(55, '5v l4940v5 linear regulator', 'DA 5V linear regulator can be used to generate a stable 5V supply voltage from a higher input voltage. Always be sure to use decoupling capacitors with your linear regulators.', '2.15', 18, 4),
+(56, '9v battery clip', 'Use a 9V battery clip to easily connect your 9V battery to your Arduino. Use one with leads to connect your battery directly to a breadboard or the VIN pin on the Arduino.  You can also buy a clip with a barrel jack for plugging directly into the Arduino’s barrel jack.', '1.15', 25, 4),
+(57, 'blue led', 'An average 5mm Blue LED has a 3.4V forward voltage drop, and a forward current of 20-30mA. They are generally brighter than other LED colors.', '0.25', 35, 4),
+(58, 'red led', 'An average 5mm Red LED has a 2V forward voltage drop, and a forward current of 20mA.', '0.25', 35, 4),
+(59, 'yellow led', 'An average 5mm Yellow LED has a 2V forward voltage drop, and a forward current of 20mA. Bright Yellow LEDs can have a forward voltage as high as 3.4V', '0.25', 35, 4),
+(60, 'green led', 'An average 5mm Greeen LED has a 2V forward voltage drop, and a forward current of 20mA.', '0.25', 37, 4),
+(61, 'capacitor', 'It Measures the capacitance from 0.2pF to 100uF with no external hardware. It requires one digital pin and one analog pin.', '1.75', 13, 4),
+(62, 'fan blade', 'It is used with a DC motor in order to cool a hardware.', '2.15', 11, 4),
+(63, 'dc motor', 'A DC motor (Direct Current motor) is the most common type of motor. If you connect these two leads directly to a battery, the motor will rotate. If you switch the leads, the motor will rotate in the opposite direction.', '3.11', 17, 4),
+(64, 'jumper wire', 'Jumper wires are used for making connections between items on your breadboard and your Arduino’s header pins. Use them to wire up all your circuits.', '0.15', 170, 4),
+(65, 'f-m dupont wire', 'It has one pin  which is normally used to interconnect specific components.', '0.25', 130, 4),
+(66, 'full-size breadboard', 'A breadboard is a solderless construction base used for developing an electronic circuit and wiring for projects with microcontroller boards like Arduino.', '12.77', 16, 4),
+(67, 'mcp4231 digital spi potentiometer', 'The MCP4231 is a dual-channel SPI digital potentiometer. It is available with a variety of versions with varying resolutions and resistance ranges. The linked part, and the part used in the first edition of the book is MCP4231-103E/P. ', '8.17', 15, 4),
+(68, 'membrane keypad switch', 'Keypads allow you to interact with a microcontroller. They come in wide variety of shapes and sizes. The most commons sizes are 3×4 and 4×4 and you can get keypads with with words, letters and numbers written on the keys.', '9.19', 14, 4),
+(69, 'pn2222 npn transistor', 'Use an NPN Base Junction Transistor (BJT) to drive high current loads (like motors) using your Arduino.', '7.47', 19, 4),
+(70, '9v battery', 'Use a 9V battery with your Arduino projects to provide a higher-current power supply for things like motors. You can also feed 9V power into your Arduino’s DC barrel jack using 9V battery clip with a jack to get a regulated 5V from the internal regulator.', '5.17', 21, 4),
+(71, 'servo motor', 'Use a servo for precise position control . Servos can consume a lot of power, so consider connecting the 5V wire to a separately regulated 5V supply instead of the Arduino’s 5V power. Unless modified, servos generally have a 180 degree rotation range.', '6.89', 11, 4),
+(72, 'remote + ir receptors', 'IR Remote controls are used in arduino to control some components remotely. It is used with an IR receptor.', '13.17', 9, 4),
+(73, 'sd card', 'The Arduino can create a file in an SD card to write and save data using the SD library. There are different models from different suppliers, but they all work in a similar way, using the SPI communication protocol.', '5.87', 17, 4),
+(74, 'usb cable', 'This is a standard A-B USB Cable. It can be used to connect your computer to Arduinos that use a full-sized B-type USB connection.', '1.67', 21, 4),
+(75, 'resistor 10000ohm', ' A 10kΩ resistor has brown, black, and orange stripes in that order.  The last stripe represents the tolerance. Gold means ±5%.', '0.33', 50, 4),
+(76, 'resistor 220ohm', 'A 220Ω resistor has red, red, and brown stripes in that order.  The last stripe represents the tolerance. Gold means ±5%.', '0.33', 45, 4),
+(77, 'resistor 1000ohm', 'A 1kΩ resistor has brown, black, and red stripes in that order.  The last stripe represents the tolerance. Gold means ±5%.', '0.33', 48, 4),
+(78, 'sn754410 h-bridge ic', 'The SN754410 Quad Half H-Bridge is just faster, cheaper, smaller and better. Capable of driving high voltage motors using TTL 5V logic levels, the SN754410 can drive 4.5V up to 36V at 1.1A continuous output current.', '15.87', 7, 4),
+(79, 'sn74hc595n shift register ic', 'It is a shift register which works on Serial IN Parallel OUT protocol. It receives data serially from the microcontroller and then sends out this data through parallel pins.', '14.67', 9, 4),
+(80, 'resistor 4700ohm', ' A 4.7kΩ resistor has yellow, purple, and red stripes in that order.  The last stripe represents the tolerance. Gold means ±5%.', '0.33', 60, 4),
+(81, 'resistor 100ohm', 'A 100Ω resistor has brown, black, and brown stripes in that order.  The last stripe represents the tolerance. Gold means ±5%.', '0.33', 55, 4),
+(82, 'resistor 150ohm', 'A 150Ω resistor has brown, green, and brown stripes in that order.  The last stripe represents the tolerance. Gold means ±5%.', '0.33', 57, 4),
+(83, 'rgb led module', 'An RGB LED Module consists of a 4-pin RGB LED, three current limiting resistors and connectors.By connecting the Red, Green and Blue LED Pins to PWM pins of Arduino, you can generate several colours.', '2.08', 32, 6),
+(84, 'push button module', 'The Push Button Module consists of a momentary tactile push button and a pull-up (or pull-down) resistor along with the connectors.', '1.89', 28, 6),
+(85, 'breadboard power supply module', 'If you want to easily power the components on your breadboard, then a Breadboard Power Supply Module is the right choice. It provides dual output voltages: 3.3V and 5V on two different power rails.', '2.19', 25, 6),
+(86, 'photoresistor sensor module', 'Photoresistor is a device used to detect light. If you want to detect light using an Arduino then use the Photoresistor Sensor Module. It consists of an LDR, an Op-Amp , a potentiometer  and a couple of passive components. You can get both the analog voltage as well as the digital signal.', '3.12', 22, 6),
+(87, 'tilt sensor module', 'If you want to detect the tilt or vibration of an object, then you can use a Tilt Sensor Module. There are two types of tilt sensors: one with a rolling ball and one with Mercury. The tilt sensor module consists of a tilt switch, an op-amp circuit to produce a digital output.', '2.18', 33, 6),
+(88, 'reed switch module', 'A Reed Switch is a sensor that is normally open but when in the presence of a magnetic field, it closes. You can use a Reed Switch Module to implement a contactless switch control using Arduino.', '4.10', 19, 6),
+(89, 'magnetic hall sensor module', 'To detect the presence of a magnetic field, you have to use a Hall Effect Sensor. The A3144 Hall Effect Sensor based Magnetic Hall Sensor Module can be used as a Magnetic Detector Switch.', '2.33', 23, 6),
+(90, 'infrared obstacle avoidance sensor module', 'This module consists of Infrared transmitter-receiver pair (IR LED and Photo Diode) placed side-by-side to detect obstacles.', '2.89', 24, 6),
+(91, 'pir sensor module', 'Passive Infrared Sensor or simply PIR Sensor allows you to detect or sense any motion. You can implement Motion Detection Applications using Arduino.', '1.02', 27, 6),
+(92, 'rotary encoder module', 'A 360-degree Rotary Encoder Module is an input device that provides both the direction of rotation as well as how much it is rotated. It converts angular movement into digital code. A Rotary Encoder is a position sensor and generates an output as per the rotational movement.', '4.16', 23, 6),
+(93, 'potentiometer module', 'A potentiometer is a simple knob that provides a variable resistance, which we can read into the Arduino board as an analog value. ', '3.10', 26, 6),
+(94, 'speed sensor module', 'If you want to detect the speed of a rotating object, then you can use a Speed Sensor Module. It is based on Infrared Transmitter – Receiver pair.', '1.33', 43, 6),
+(95, 'infrared flame detection sensor module', 'The Infrared Flame Detection Sensor Module is used to detect flames in the range of 760 nm to 1100nm. You can design a fire/flame detection application using Arduino.', '3.89', 25, 6),
+(96, 'active piezo buzzer module', 'A PCB Mounted Active Buzzer Module produces a tone at a predefined frequency using its internal oscillator. All you need to do is apply a DC Voltage and the Active Buzzer Module generates sound.', '1.08', 27, 6),
+(98, 'microphone sound sensor module', 'A Microphone based Sound Sensor Module is used to detect voices or loud sounds. Using Arduino and a Microphone Sensor, you can implement applications like Voice Activated Switch or Loudness Detector.', '2.12', 27, 6),
+(99, 'ntc thermistor temperature sensor module', 'If you want to implement a small and low cast temperature sensor, then a NTC Thermistor is the right choice. The NTC Thermistor Temperature Sensor Module is available as Analog Sensor as well as a Digital Sensor. A Digital Temperature Sensor is useful as you can easily adjust the sensitivity using the on-board potentiometer.', '3.33', 23, 6),
+(100, 'mq2 gas sensor module', 'Often used in safety related applications, the MQ2 Gas Sensor Module is used to detect Smoke, Carbon Monoxide, Hydrogen and other gases. ', '2.19', 35, 6),
+(101, 'hc-sr04 ultrasonic module', 'You can detect objects up to 4m. The module consists of two Ultrasonic transduces of which one is acting as a transmitter and the other as a receiver.', '2.08', 21, 6),
+(102, 'dht11 humidity sensor module', 'You can easily measure  the relative humidity. Both the Sensors are very similar except that DHT22 has better range and accuracy than DHT11 (so, costly as well).', '1.26', 24, 6),
+(103, 'dht22  temperature sensor module', 'You can easily measure the ambient temperature . DHT22 has better range and accuracy than DHT11 (so, costly as well).', '1.12', 27, 6),
+(104, 'dual axis joystick module', ' A Joystick Module consists of two independent potentiometer (hence, dual axis) and also a push button. There are many applications of a Joystick Module using Arduino like Robot Control, RC Car, Robotic Arm, Servo Motor Control etc.', '5.33', 22, 6),
+(105, '5v relay module', 'A 5V Relay Module runs on 5V (just like an Arduino), so it can be easily interfaced with Arduino to control large appliances like bulbs, motors etc.', '3.19', 35, 6),
+(106, 'infrared receiver module', 'It is used to detect 38kHz IR Signals. It is normally used in IR Remote Control Applications using Arduino.', '1.98', 21, 6),
+(107, 'infrared transmitter module', 'To pair with the IR Receiver Module, you can use the Infrared Transmitter Module. It consists of an IR LED which can transmit 38 kHz modulating signal. Suitable for Arduino based IR Remote Control Projects.', '1.16', 24, 6),
+(108, 'laser transmitter module', 'The Laser Transmitter Module consists of a Laser Diode capable of emitting light of 650 nm wavelength. The Laser Diode is surrounded by a copper sleeve and also fitted with a condenser lens.', '2.62', 27, 6),
+(109, 'knock sensor module', 'A Knock Sensor Module, as the name suggests, is used to detect Knock or a Vibration. The main sensing element is a conductive vibrating spring enclosed in a housing.', '3.31', 21, 6),
+(110, 'soil moisture sensor module', 'A Soil Moisture Sensor Module consists of capacitive probes and LM393 Voltage Comparator Module. You can measure the volumetric content of water in soil using this module.', '2.19', 31, 6),
+(111, 'bmp180 barometric pressure sensor module', 'The BMP180 is an old but very useful sensor. It is a Barometric Pressure Sensor that can also measure Temperature and Altitude. It is a tiny module and is a digital sensor.', '3.18', 29, 6),
+(112, 'mpu6050 accelerometer', 'If you want to detect the orientation of an object, then the MPU6050 Accelerometer / Gyroscope Module is the best choice. It is a 6-axis motion tracking device.', '2.16', 22, 6),
+(113, 'logic level converter module', 'We know that Arduino is a device that runs on 5V logic. But what if you want to interface a sensor or module which runs on 3.3V? The answer is Logic Level Converter Module.', '5.62', 16, 6),
+(114, 'pyroelectric infrared sensor module', 'This is a Pyroelectric IR Infrared sensor for People Detection. I often like testing this sensor by simply using it like a Switch-ON/Switch-OFF device for an LED, That allows to easily tune its sensitivity and its timing.', '2.31', 26, 6),
+(115, 'water level sensor (leak sensor)', 'This sensor is used for water detection and can be used in a project such as: sensing the rainfall, water level, water leakage, Tank overflow detector. This sensor can easily convert the water size to an analog signal, and the output analog value can directly be used in the program function, then to achieve the desired function.', '6.76', 12, 6),
+(116, 'ds1307 real time clock module', 'This RTC module is based on the clock chip DS1307 that provides you with seconds, minutes, hours, day, date, month, and year information for your projects.', '2.92', 21, 6),
+(117, 'heartbeat module', 'This sensor does nothing but measure heart rate of the heart.', '2.31', 31, 6),
+(118, 'hunt sensor module', 'It detects if a light reflecting or absorbing area is in front of it.This module uses an IR transmitter and receiver that will detect how reflective the surface is in front of the module.', '4.19', 28, 6),
+(119, 'optical broken module', 'If the sensor is broken the LED is turned on. Device senses a signal, LED lights, otherwise off.', '7.16', 26, 6),
+(120, 'touch sensor module', 'Touch sensor (also called touch button or touch switch) is widely used to control devices.', '8.12', 18, 6),
+(121, 'vibration switch module', 'It consists of a conductive vibration spring and a 10k resistor, it will react to shock and vibration by closing the circuit.', '4.31', 22, 6),
+(122, 'elegoo-starter-kit', 'Elegoo UNO R3 (Compatible with Arduino Uno).16x2LCD Module ( with pin header).Breadboard.Breadboard Expansion Board.Breadboard Power Supply Module.Joystick Module.\r\nIR Receiver.Servo Motor (SG90).Stepper Motor.ULN2003 Stepper Motor Driver Board.Ultrasonic Sensor.DHT11 Temperature and Humidity Module.9V Battery.\r\n65 Jumper Wire.USB Cable.Buzzer (Active and Passive).Potentiometer.5V Relay.Remote.Tilt Switch.Button (5).1 digit 7-segment Display.\r\n4 digit 7-segment Display.LEDs (5x Yellow, 5x Blue, 5x Green, 5x Red, 1x RGB).Photoresistor (2).Thermistor.Diode 1N4007 (2).P2N2222 NPN Transistor (2).\r\nIC 74HC595 Shift Register.Resistor (120).Female-to-male DuPont Wire (10).', '38.34', 16, 2),
+(123, 'vilros-arduino-starter-kit', 'Arduino Uno R3.Arduino & Breadboard Holder.Bread Board.Shift Register 74HC595.NPN Transistors P2N2222A (2).1N4148 Diodes (2).DC Motor with wires.\r\nSmall Servo.5V Relay.Temperature Sensor TMP36.USB Cable.Jumper Wires (65).Photocell.LEDs (1x RGB, 10 x Red, 10 x Yellow).10K Trimpot.Piezo Buzzer.\r\nBig 12mm Buttons (2).Resistors (45 x 330Ω and 45 x 10KΩ).', '26.94', 19, 2),
+(124, 'dfrobot-starter-kit', 'DFRduino UNO R3.Prototyping Shield.Jumper Cables Male to Male (30).Jumper Cables Female to Male (10).Resistors (20 x 220Ω, 20 x 4.7K Ω, 20 x 1KΩ, 20 x 1KΩ).\r\n5mm LED (10).IR Receiver Diode.Mini Push Button (4).Ambient Light Sensor.Tilt Switch Sensor.8-Segment LED.Temperature Sensor LM35.Relay.\r\nBuzzer.Fan.Motor.10KΩ Potentiometer (3).Micro Servo.Mini Controller (with battery CR2025 inside).AA Battery Holder (6).Solderless Breadboard (400 Point).', '46.15', 13, 2),
+(125, 'kuman-starter-kit', 'Kuman UNO R3 Development Board.USB cable.Prototype extension board.Mini breadboard.5V stepper motor.ULN2003 stepper motor driver board.LEDs (5 x Red, 5 x Green, 5 x Yellow, 1 x three color).\r\nVibration Sensor (2).Flame sensor.LM35 temperature sensor.Infrared receiver.Photoresistor (3).Key cap (4).Key switch (4).Adjustable potentiometer.Passive buzzer (piezo buzzer).Active buzzer (tone generator).\r\nJumper cap.Large breadboard.Remote Control.16 x 2 Screen LCD.Breadboard module.HC-SR04 module.Component box.DuPont line 10pin.Breadboard line (30).8*8 dot matrix.\r\n1 digit 8 segment tube.4 digit 8 segment tube.IC 74HC595.Battery Holder.Resistors (5 x 220Ω, 5 x 330Ω, 5 x 1KΩ, 5 x 10KΩ).Battery 9V.40pin pin header.\r\nThermistor module.Touch sensor.CD with tutorial.Plastic box.', '49.95', 12, 2),
+(126, 'osoyoo-starter-kit', 'Osoyoo UNO board.USB Cable.Solderless Prototype Breadboard.Jumper Wires.LEDs (Bright White, 6 x Red, 6 x Yellow, 6 x Green) (6).Photoresistors (6).\r\n10KΩ Potentiometers (3).Temperature sensor (TMP36).Tilt Sensor.16 x 2 LCD (I2C type).74HC595 Shift Register.4-digit 7 segment LED display.\r\n1-digit 7 segment LED display.Stepper motor + Bridge.Servo Motor.Piezo Buzzer.Infrared Remote Controller and Receiver.Resistors (20 x 200Ω, 20 x 1KΩ, 20 x 10KΩ, 5 x 1MΩ).', '29.53', 17, 2),
+(127, 'arduino starter kit – official english', 'Arduino Projects Book.Arduino UNO.USB cable.Breadboard 400 Pins.Easy-to-assemble wooden base.9V battery snap.Solid core jumper wires (70).\r\nStranded jumper wire (1).Phototransistors (6).10KΩ Potentiometers (6).Pushbuttons (10).Temperature sensor TMP36.Tilt sensor.Alphanumeric LCD (16×2 character display).LEDs (Bright White,RGB, Red (8),Green(8),Yellow(8) and Blue(3)).\r\nSmall DC motor (6/9V).Small servo motor.Piezo capsule.H-bridge motor driver L293D.Optocouplers 4N35 (2).MOSFET Transistors IRF520 (2).\r\nCapacitors (5 x 100nF, 3 x 100µF, 5 x 100pF).Diodes 1N4007 (5).Transparent gels (red, green, blue).pin male header strip (40).\r\nResistors (220Ω (20), 560Ω (5),1KΩ (5), 4.7Ω (5), 10KΩ (10), 1MΩ (5), 10MΩ (5)).', '61.25', 9, 2),
+(128, 'geekcreit arduino most complete starter kit', ' LED (white, yellow, blue, red, green) (25).Ceramic Capacitor (22pf and 104pf) (10).photoresistor (2).thermistor.Average 5% diode (1N4007).Electrolytic Capacitor (10uF 50V and 100UF 50V) (4).\r\n10% NPN Transistor (PN2222 and S8050).tilt switch .button (small) (5).7-segment number display.digit 7-segment display(4).Audio Sensor Module.\r\nLCD1602 Module (With Pin Header).IC L293D.IC 74HC595.Active doorbell.passive buzzer.RTC Module.DHT11 Temperature and Humidity Module.\r\npotentiometer (2).encoder rotary unit.Steering wheel unit.keyboard module.5V Relay.IR Receiver Module.MEGA2560 . Control Board.breadboard.Servo Motor (SG90).stepper motor.\r\nULN2003 Stepper Motor Driver Board.Expanding Prototype.Power Display Module.HC-SR501 PIR Motion Sensor.Ultrasound Sensor.GY-521 Module (with pin head).3V Servo Motor.\r\nMAX7219 unit.Remote Control.9V 1A Power Supply.Jumper Wire (65).water lever sensor.USB cable.9V Battery with DC.RC522 RFID Module.\r\nResistor (10R /100R/220R/330R/1K/2K/5K1/10K/100K/1M) (100).', '89.95', 8, 2),
+(129, 'lafvin-project-super-starter-kit', 'Prototype Expansion.Stepper Motor.USB Cable.Remote.65Jumper Wire.Power Supply Module.Resistors (100).ULN2003 Stepper Motor Driver Board.\r\nUltrasonic Sensor.Joystick Module.Membrance Switch Module.Water Level Detection Sensor Module.Fan Blade and 3V DC Motor each.\r\nDight 7-segment Display(4).Dight 7-segment Display.DHT11 Temperature and Humidity Module.Potentiometer(10K).IR Receiver Module.\r\nSound Sensor Module.Servo Motor (SG90).LCD1602 Module.5V Relay.F-M Dupont Wire.9V Battery Connector with DC (1 lithium ion battery).\r\nElectrolytic Capacitor (100UF 50V).L293D.74HC595.Passive Buzzer Active Buzzer.Small Button (5).RGB Led.5 LED’s each (Red Led, Yellow Led, Blue Led, Green Led, White Led).\r\nDiode Rectifier 1N4007(2).PN2222 NPN Transistor (2).Thermistor.Photoresistor (2).830 Tie-Points Breadboard.', '69.53', 11, 2),
+(130, 'multi-functional smart car kit advanced', 'UNO R3. USB cable.V5.0 extension board.L298N motor driver board.Ultrasonic Sensor.Ultrasonic holder.Servo motor.Servo motor fixed plate.\r\nBluetooth module.Line tracking module (3).Motor (4).Wheel (4).Remote.IR Receiver Module.Cell box.18650 battery charger.Black tape.Acrylic plates (2).\r\nbag Screws and nuts for every part (5).40pin F-F dupont wire.Screwdriver.Bunding belt (4).Plastic box.CD with tutorial.', '41.19', 15, 2),
+(131, 'rexqualis-complete-starter-kit', 'R3 Board.Power Supply Module.RC522 RFID Module.LCD 1602 Module.Real Time Clock.Ultrasonic Sensor.DHT11 Temperature & Humidity Module.\r\nIR Receiver Module.Sound Sensor Module.Rotary Encoder Module.MAX7219 LED Dot Matrix Module.Water Level Detection Sensor Module.\r\nMQ – 2 Gas Sensor.MPU – 6050 (GY – 521) Module.Soil Moisture Sensor Module.HC – SR501 PIR Sensor.Stepper Motor.ULN2003 Stepper Motor Driver Board.\r\nJoystick Module.Power Adapter.Servo Motor (SG90).3 – 6V Motor.Fan Blade.Membrane Switch Module.Remote.CD with Tuborial.digit 7-Segment Display.\r\ndigit 7-Segment Display(4).Relay.Potentiometer (2).Active Buzzer.Passive Buzzer.Breadboard.Breadboard Expansion Board.20Pin M/F Dupont Wire.\r\nUSB Cable.Battery Clip.Jumper Wire (65).IC 74HC595.IC L293D.Tilt Switch.Photoresistor (2).Button (5).Thermistor (2).10UF 50V (5).100UF 50V (5).\r\n1N4007 (5).PN2222 (5).100NF (5).22PF (5).RGB LED (2).LED (Yellow/Blue/Green/Red/White – 5pcs) (25).Resistor(10R/100R/220R/330R/1K/2K/5K/10K/100K/1M) (120).', '99.99', 8, 2),
+(132, 'rfid-starter-kit-for-arduino-uno-r3-upgraded', 'UNO Board.USB Cable.Jump Cable.Breadboard.LED Light (5).Pack Resistor.Female to male dupond line.Potentiometer.Buzzer.74HC595.Infrared receiver.\r\nLM35.Flame Sensor.Ball Switch.Photoresistor.Key button.Remote control.4-digit display tube.8*8 Dot matrix module.digit display tube.Stepper motor driver board.Stepper motor.\r\n9g Servo.IIC 1602 LCD.XY joystick module.Temperature module.Water test module.RFID Module.RFID keychain.RFID White card.Sound Module.Relay Module.\r\nClock Module.4*4 Key board.RGB 3 color module.9V battery Snap.', '38.13', 17, 2),
+(133, 'smraza-super-starter-kit', 'UNO R3 Controller Board.LCD 1602 Module (with pin header).Breadboard Expansion Board.Servo Motor.Stepper Motor.830 Tie-points Breadboard.Ultrasonic distance Sensor.\r\nULN2003 Stepper Motor Driver Board.Potentiometer (2).Photoresistor (2).Thermistor.Active Buzzer.Passive Buzzer.Diode Rectifier 1N4007 (2).2N2222 Transistors (2).\r\nLEDs ( RGB, Green (5), Red (5), Blue (5), Yellow (5)).Tilt Switch.IR Receiver Module.7-Segment Display.Digit 7-Segment Display(4).IC 74HC595.\r\nPower Supply Module.Joystick Modulet.DHT-11(Temperature and Humidity Sensor).9V Battery with DC.9V Battery Adapter.Water Level Sensor.USB Cable.\r\nJumper Wire (65).Male to Female Jumper Wires.IR remote control.Resistors (2K (10), 5.1K (10),10K (10), 10R (10), 330R (10)).40 Pin Header.40 Pin Shape Header.\r\nResistors (220R (10), 1M (10), 100R (10), 100K (10),1K (10)).Small Button (5).', '81.19', 12, 2),
+(134, 'sunfounder-arduino-starter-kit-with cd tutorial', 'Project Box.Booklet.LEDs (RGB, Red (16), White (2),  Green (2), Yellow (2)).40 Pin Header.555 Timer IC.Optocoupler 4N35 (2).Shift Resister 74HC595N (2).\r\nH-Bridge Motor Driver L293D.Accelerometer ADXL335.Rotary Encoder.Push-Button (5).Resistors ( 220Ω (8), 1KΩ (4), 10KΩ (4), 1MΩ (4), 5.1MΩ (4)).Switch.\r\nPotentiometer 50KΩ.LCD1602 Character Display.Dot Matrix Display 8×8.7-Segment Character Display (2).DC Motor.NPN Transistor S8050 (2).PNP Transistor S8550 (2).\r\nCapacitors (100nF (4),10nF (4)).Diode (4).Breadboard.USB Cable.Jumper Wire Male to Male (65).DuPont Wire Female to Male (20).Passive Buzzer.Fan.', '44.19', 17, 2),
+(135, 'ultimate starter kit for mega 2560', 'Mega 2560 Controller Board.USB Cable.Breadboard.Jumper Wire (65).IC 74HC595.Active Buzzer.Tilt Switch.Photo resistor.Yellow LED (5).Blue LED (5).\r\nGreen LED (5).Red LED (5).1pcs RGB LED.5pcs Button (small).Resistor (10R) (10).Resistor (100R) (10).Resistor (220R) (10).Resistor (330R) (10).\r\nResistor (1K) (10).Resistor (2K) (10).Resistor (5K1).Resistor (10K) (10).Resistor (100K) (10).Resistor (1M).Female-to-male DuPont Wire(5).', '31.13', 14, 2);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `carts`
+--
+ALTER TABLE `carts`
+  ADD PRIMARY KEY (`idcart`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`idcategorie`);
+
+--
+-- Indexes for table `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`idclient`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`idorder`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`idproduct`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `carts`
+--
+ALTER TABLE `carts`
+  MODIFY `idcart` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `idcategorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `idclient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `idorder` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `idproduct` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
