@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;400&display=swap');
+
+body{
+    font-family: 'Dosis', sans-serif;
+}
+
+table{
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+table td, table th{
+    padding: 5px;
+    border: solid 2px white;
+    background-color: rgb(240, 238, 238);
+}
+
+
+img{
+    width: 250px;
+    max-height: 250px;
+}
+
+.empty{
+    color:#068da5;
+    display: flex;
+    align-items: center;
+    font-size: larger;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#account{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+a {
+    color: #068da5;
+font-size: large;
+
+}
+
+.link{
+    margin-top: 30px;
+}
+
+#main_container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.container{
+    border-bottom: solid 2px #068da5;
+    width: 70%;
+    margin-top: 30px;
+    padding: 10px;
+}
+
+input[type="text"]{
+    text-align: center;
+    border: none;
+    padding: 5px;
+    outline: none;
+    width: 90%;
+}
+
+#link{
+    color: #068da5;
+    font-size: large;
+}
+
+
+
+table caption{
+    margin-bottom: 10px;
+}
+
+span :hover{
+    cursor: pointer;
+}
+
+@media screen and (min-width:1200px) and (max-width:1400px) {
+    .container{
+        width: 70%;
+    }
+}
+
+@media screen and (min-width:1000px) and (max-width:1200px) {
+    .container{
+        width: 80%;
+    }
+}
+
+@media screen and (min-width:800px) and (max-width:1000px) {
+    .container{
+        width: 90%;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:800px) {
+    .container{
+        width: 95%;
+    }
+}
+
+@media screen and  (max-width:600px) {
+    .container{
+        width: 100%;
+    }
+}
